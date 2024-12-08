@@ -1,6 +1,6 @@
 import Foundation
-internal import KeychainAccess
-internal import SecureStorageInterface
+internal import SecureStorage_KeychainAccess
+import SecureStorageInterface
 
 public extension SecureStorage {
     final actor Store {

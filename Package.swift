@@ -14,13 +14,8 @@ let package = Package(
         .library(
             name: "SecureStorage",
 			type: .dynamic,
-            targets: ["SecureStorage"]
+            targets: ["SecureStorage", "SecureStorageInterface"]
 		),
-        .library(
-            name: "SecureStorageInterface",
-            type: .dynamic,
-            targets: ["SecureStorageInterface"]
-        ),
     ],
     dependencies: [],
     targets: [

@@ -1,4 +1,4 @@
-internal import SecureStorageInterface
+import SecureStorageInterface
 import Foundation
 
 extension SecureStorage.Store: SecureStorage.ISecureStorage {
