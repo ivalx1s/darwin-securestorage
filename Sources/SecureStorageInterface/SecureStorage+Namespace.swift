@@ -1,0 +1,3 @@
+
+// namespace
+public enum SecureStorage {}
