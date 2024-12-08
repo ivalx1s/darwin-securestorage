@@ -1,5 +1,5 @@
 public extension SecureStorage {
-    enum Scope {
+    enum Scope: Sendable {
         case local
         case cloud
     }

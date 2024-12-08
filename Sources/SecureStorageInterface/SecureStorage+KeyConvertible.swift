@@ -1,7 +1,7 @@
 
 
 public extension SecureStorage {
-    protocol KeyConvertible {
+    protocol KeyConvertible: Sendable {
         var key: String { get }
     }
 }
