@@ -4,7 +4,6 @@ import SecureStorageInterface
 
 public extension SecureStorage {
     final actor Store {
-        
         internal let isolatedSynchronizableKeychain: Keychain
         internal let isolatedNonSynchronizableKeychain: Keychain
         internal let sharedSynchronizableKeychain: Keychain
@@ -13,6 +12,20 @@ public extension SecureStorage {
         internal let decoder: JSONDecoder = .init()
         internal let encoder: JSONEncoder = .init()
         
+        #if targetEnvironment(simulator)
+        public init(
+            isolatedAccessGroup: String,
+            sharedAccessGroup: String,
+            isolatedService: String,
+            sharedService: String
+        ) {
+            // don't use accessGroup and syncronization
+            self.isolatedSynchronizableKeychain = Keychain(service: isolatedService)
+            self.isolatedNonSynchronizableKeychain = Keychain(service: isolatedService)
+            self.sharedSynchronizableKeychain = Keychain(service: sharedService)
+            self.sharedNonSynchronizableKeychain = Keychain(service: sharedService)
+        }
+        #else
         public init(
             isolatedAccessGroup: String,
             sharedAccessGroup: String,
@@ -39,5 +52,6 @@ public extension SecureStorage {
                 accessGroup: sharedAccessGroup
             ).synchronizable(false)
         }
+#endif
     }
 }
